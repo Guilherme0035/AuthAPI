@@ -61,7 +61,7 @@ public class SecurityConfig {
                 .privateKey(privateKey)
                 .build();
 
-        var jwkSet = new JWKSet(jwk); // ✅ agora o set contém sua chave RSA
+        var jwkSet = new JWKSet(jwk);
         var jwkSource = new ImmutableJWKSet<>(jwkSet);
         return new NimbusJwtEncoder(jwkSource);
     }
