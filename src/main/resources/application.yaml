@@ -17,5 +17,6 @@ spring:
 
 security:
   jwt:
-    secret: "u8$9JvQZxT2pL!mC5$4%*7&!#k7qY4sF%tP6^Nd3B&XcR1gV*LwUzEoM!hS9Kf2y"
+    private-key-path: classpath:app.key
+    public-key-path:  classpath:app.pub
     expiration: 3600000
