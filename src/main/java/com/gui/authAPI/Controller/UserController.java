@@ -1,6 +1,6 @@
 package com.gui.authAPI.Controller;
 
-import com.gui.authAPI.Controller.dto.LoginRequest;
+import com.gui.authAPI.Controller.dto.CreateUserRequest;
 import com.gui.authAPI.Entity.User;
 import com.gui.authAPI.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
-    ResponseEntity<User> createUser(@RequestBody LoginRequest request){
+    ResponseEntity<User> createUser(@RequestBody CreateUserRequest request){
         User user = userService.createUser(request);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(user);
     }
 
 }
