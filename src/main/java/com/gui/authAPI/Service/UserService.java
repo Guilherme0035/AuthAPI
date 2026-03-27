@@ -1,5 +1,6 @@
 package com.gui.authAPI.Service;
 
+import com.gui.authAPI.Controller.dto.CreateUserRequest;
 import com.gui.authAPI.Controller.dto.LoginRequest;
 import com.gui.authAPI.Entity.User;
 import com.gui.authAPI.Repository.UserRepository;
@@ -22,17 +23,18 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Transactional
-    public User createUser(LoginRequest request){
+    public User createUser(CreateUserRequest request){
 
-         Optional<User> user = userRepository.findByUserName(request.username());
+         Optional<User> user = userRepository.findByUserName(request.userName());
 
         if (user.isPresent()){
             throw new ResponseStatusException(HttpStatus.CONFLICT,"Usuário já existente");
         }
 
         User newUser = new User();
-        newUser.setUserName(request.username());
+        newUser.setUserName(request.userName());
         newUser.setPassword(passwordEncoder.encode(request.password()));
+        newUser.setRole(request.role());
 
         return userRepository.save(newUser);
     }
