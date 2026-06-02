@@ -20,3 +20,7 @@ security:
     private-key-path: classpath:app.key
     public-key-path:  classpath:app.pub
     expiration: 3600000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
